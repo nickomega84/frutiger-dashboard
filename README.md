@@ -7,6 +7,9 @@
 
 A fully functional, nostalgic web-based desktop environment inspired by the classic **Frutiger Aero** aesthetic of the late 2000s. This project combines retro UI/UX design (Glassmorphism) with modern asynchronous JavaScript and AI API integrations.
 
+## 📸 Preview
+![Frutiger Aero Dashboard Preview](preview.png)
+
 ## ✨ Key Features
 
 * **🤖 Integrated AI Assistant:** A real-time chat interface connected to a powerful LLM (Groq / Llama 3) via an **n8n webhook** backend.
