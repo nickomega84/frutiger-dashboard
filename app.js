@@ -2,13 +2,9 @@ const chatInput = document.getElementById('chat-input');
 const sendBtn = document.getElementById('send-btn');
 const chatOutput = document.getElementById('chat-output');
 
-// Elementos del Menú de Inicio
 const startMenu = document.getElementById('startMenu');
 const startBtn = document.querySelector('.start-btn');
-
-// Elemento del Reloj
 const timeDisplay = document.querySelector('.time-display');
-
 
 const aiWindow = document.getElementById('widget-1');
 const windowHeader = document.querySelector('.window-header');
@@ -154,7 +150,6 @@ window.openAIWindow = function() {
     const aiWindow = document.getElementById('widget-1');
     const startMenu = document.getElementById('startMenu');
     
-    // 1. Mostramos la ventana de nuevo
     if (aiWindow) {
         aiWindow.style.display = 'flex'; 
     }
@@ -174,8 +169,27 @@ window.shutdownSystem = function() {
     `;
 };
 
+function startBackgroundMusic() {
+    const audio = document.getElementById('bg-music');
+    
+    if (audio && audio.paused) {
+        audio.play().then(() => {
+            audio.volume = 0.4;
+            console.log("Ambient music initiated");
+        }).catch(error => {
+            console.log("The browser is blocking the audio:", error);
+        });
+    }
+    
+    document.body.removeEventListener('click', startBackgroundMusic);
+}
+
+document.body.addEventListener('click', startBackgroundMusic, { once: true });
+
 window.toggleMusic = function() {
     const audio = document.getElementById('bg-music');
+    if (!audio) return;
+
     if (audio.paused) {
         audio.play();
         audio.volume = 0.4;
