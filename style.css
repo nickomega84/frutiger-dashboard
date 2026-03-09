@@ -1,0 +1,284 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --taskbar-bg: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));
+}
+
+body {
+    display: grid;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    grid-template-rows: 1fr 50px; 
+    overflow: hidden;
+    background: url('assets/frutiger.jpg') center/cover no-repeat;
+}
+
+.desktop {
+    position: relative;
+    padding: 20px;
+}
+
+.taskbar {
+    background: var(--taskbar-bg);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.start-btn {
+    background: linear-gradient(to bottom, #4ade80, #16a34a);
+    border: 1px solid #14532d;
+    border-radius: 20px;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 6px 20px;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.7), 0 2px 4px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+}
+
+.start-btn:hover {
+    background: linear-gradient(to bottom, #22c55e, #15803d);
+    box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.9), 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.start-menu {
+    display: none; 
+    position: absolute;
+    bottom: 50px; 
+    left: 0;
+    width: 260px;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); 
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 0 8px 8px 0;
+    box-shadow: 2px -2px 15px rgba(0,0,0,0.15), inset 0 0 12px rgba(255,255,255,0.6);
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.menu-user-area {
+    background: linear-gradient(to right, rgba(0, 120, 215, 0.65), rgba(0, 180, 255, 0.3));
+    padding: 12px;
+    color: white;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.6);
+}
+
+.menu-user-area img { 
+    width: 36px; 
+    height: 36px; 
+    border-radius: 5px; 
+    border: 2px solid rgba(255,255,255,0.8); 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.menu-items { 
+    list-style: none; 
+    padding: 6px; 
+    margin: 0; 
+}
+
+.menu-items li {
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #1a1a1a;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.menu-items li:hover { 
+    background: rgba(255,255,255,0.8); 
+    box-shadow: inset 0 0 8px rgba(255,255,255,1); 
+}
+
+.menu-items img { width: 24px; height: 24px; }
+
+.separator { 
+    height: 1px; 
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent); 
+    margin: 6px 0; 
+    pointer-events: none; 
+}
+
+/* ==========================================
+   4. LA VENTANA DE CRISTAL (Widget IA)
+   ========================================== */
+.glass-window {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 350px;
+    min-height: 200px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    /* Fusión de sombras corregida: */
+    box-shadow: var(--glass-shadow), inset 0 0 20px rgba(255,255,255,0.5), 0 10px 20px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.window-header {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255,255,255,0.1));
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--glass-border);
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: grab;
+    user-select: none;          
+    -webkit-user-select: none;  
+}
+
+.window-header:active {
+    cursor: grabbing;
+}
+
+.window-header h3 {
+    color: #111;
+    font-size: 14px;
+    text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* --- Botones de Control (Semáforo) --- */
+.window-controls span {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-left: 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 1px 3px rgba(255,255,255,0.5); 
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.btn-min { background-color: #ffbd2e; } /* Amarillo */
+.btn-max { background-color: #27c93f; } /* Verde */
+.btn-close { background-color: #ff5f56; } /* Rojo */
+
+.window-controls span:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+.window-controls span:active {
+    transform: scale(0.9);
+}
+
+.window-content {
+    padding: 20px;
+    color: #222;
+    flex-grow: 1;
+}
+
+/* ==========================================
+   5. INTERFAZ DEL CHAT
+   ========================================== */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-output {
+    height: 180px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.1); 
+    backdrop-filter: blur(4px);
+}
+
+.msg-user {
+    background: rgba(255, 255, 255, 0.6);
+    border-left: 3px solid #0078D7;
+    padding: 6px;
+    margin: 4px 0;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.msg-ai {
+    background: rgba(173, 216, 230, 0.4);
+    border-left: 3px solid #00A1F1;
+    color: #003366;
+    padding: 6px;
+    margin: 4px 0;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.msg-error {
+    background: rgba(255, 100, 100, 0.2);
+    border-left: 3px solid red;
+    color: #900;
+    padding: 6px;
+    margin: 4px 0;
+}
+
+.chat-input-area {
+    display: flex;
+    gap: 5px;
+}
+
+.chat-input {
+    flex-grow: 1;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.5);
+    outline: none;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    color: #333;
+}
+
+.chat-input:focus {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: #00A1F1;
+}
+
+.chat-btn {
+    padding: 8px 15px;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(200,225,255,0.6) 100%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    color: #003366;
+    font-weight: bold;
+    transition: all 0.1s;
+}
+
+.chat-btn:active {
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+    transform: translateY(1px); 
+}
+

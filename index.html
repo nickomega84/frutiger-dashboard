@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frutiger Dashboard</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="app.js" defer></script>
+</head>
+<body>
+    <main class="desktop" id="desktop">
+
+        <article class="glass-window" id="widget-1">
+            <header class="window-header">
+                <h3>AI Assistant</h3> <div class="window-controls">
+                    <span class="btn-min" title="Minimize"></span>
+                    <span class="btn-max" title="Maximize"></span>
+                    <span class="btn-close" title="Close"></span>
+                </div>
+            </header>
+            <section class="window-content">
+                <div class="chat-container">
+                    <div id="chat-output" class="chat-output">
+                        <em class="sys-msg">System online. Awaiting input...</em>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chat-input" class="chat-input" placeholder="Ask the server...">
+                        <button id="send-btn" class="chat-btn">Send</button>
+                    </div>
+                </div>
+            </section>
+        </article>
+            
+    </main>
+
+	<div id="startMenu" class="start-menu">
+        <div class="menu-user-area">
+            <img src="https://img.icons8.com/color/48/user-male-circle--v1.png" alt="User">
+            <span>Admin</span>
+        </div>
+        <ul class="menu-items">
+            <li onclick="openAIWindow()">
+                <img src="https://img.icons8.com/color/48/bot.png"/> 
+                <span>AI Assistant</span>
+            </li>
+            <li class="separator"></li>
+            <li onclick="shutdownSystem()">
+                <img src="https://img.icons8.com/color/48/shutdown.png"/> 
+                <span>Shut Down</span>
+            </li>
+        </ul>
+    </div>
+	<footer class="taskbar">
+		<button class="start-btn" onclick="toggleStartMenu()" >Start</button>
+		<div class="time-display">12:00 PM</div>
+	</footer>
+
+	<audio id="bg-music" loop>
+        <source src="frutiger-music.mp3" type="audio/mpeg">
+    </audio>
+</body>
+</html>
