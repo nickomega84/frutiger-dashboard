@@ -24,10 +24,17 @@ A fully functional, nostalgic web-based desktop environment inspired by the clas
 * **Backend / Middleware:** n8n (Workflow Automation) handling HTTP requests and payload parsing.
 * **AI Provider:** Groq Cloud API (Llama 3.3 70B model).
 
-## 🚀 How to Run Locally
+Since this project relies on Vanilla web technologies, setup is straightforward. No local server, npm installations, or build tools are required.
 
-Since this project relies on Vanilla web technologies, setup is straightforward:
+1. **Clone this repository:**
+```bash
+git clone [https://github.com/nickomega84/frutiger-dashboard.git](https://github.com/nickomega84/frutiger-dashboard.git)
+```
 
-1. Clone this repository:
-   ```bash
-   git clone [https://github.com/nickomega84/frutiger-dashboard.git](https://github.com/nickomega84/frutiger-dashboard.git)
+2. **Navigate to the project directory:**
+```bash
+cd "C:/Documents/Web Projects/frutiger-dashboard"
+```
+
+3. **Launch the OS:**
+Simply locate and open the `index.html` file in your preferred modern web browser (Chrome, Firefox, Edge, etc.) to start the Frutiger Aero experience.
