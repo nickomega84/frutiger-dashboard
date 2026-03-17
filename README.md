@@ -28,7 +28,7 @@ Since this project relies on Vanilla web technologies, setup is straightforward.
 
 1. **Clone this repository:**
 ```bash
-git clone [https://github.com/nickomega84/frutiger-dashboard.git](https://github.com/nickomega84/frutiger-dashboard.git)
+git clone https://github.com/nickomega84/frutiger-dashboard.git
 ```
 
 2. **Navigate to the project directory:**
